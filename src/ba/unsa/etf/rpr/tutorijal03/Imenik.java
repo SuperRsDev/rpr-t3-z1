@@ -38,15 +38,21 @@ public class Imenik {
     }
 
     public Set<String> izGrada(Grad g) {
-        List<String> imena = imenik.entrySet()
+        Set<String> imena = imenik.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue() instanceof FiksniBroj && ((FiksniBroj)entry.getValue()).getGrad() == g)
                 .map(m -> m.getKey())
-                .collect(Collectors.toList());
-        return null;
+                .collect(Collectors.toSet());
+        return imena;
     }
 
-    public Set<TelefonskiBroj> izGradaBrojevi(Grad sarajevo) {
-        return null;
+    public Set<TelefonskiBroj> izGradaBrojevi(Grad grad) {
+        List<TelefonskiBroj> brojeviSortirani = imenik.values()
+                .stream()
+                .filter(telefonskiBroj -> telefonskiBroj instanceof FiksniBroj && ((FiksniBroj) telefonskiBroj).getGrad() == grad)
+                .sorted(Comparator.comparing(TelefonskiBroj::ispisi))
+                .collect(Collectors.toList());
+        Set<TelefonskiBroj> brojeviSetSortiran = new LinkedHashSet<>(brojeviSortirani);
+        return brojeviSetSortiran;
     }
 }
