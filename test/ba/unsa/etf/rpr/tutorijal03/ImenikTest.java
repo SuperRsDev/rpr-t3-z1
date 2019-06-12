@@ -26,7 +26,8 @@ class ImenikTest {
         imenik.dodaj("Ivo Ivic", new MobilniBroj(61, "321-645"));
         imenik.dodaj("Jozo Jozic", new MobilniBroj(64, "987-654"));
         imenik.dodaj("John Smith", new MedunarodniBroj("+1", "23 45-67-89"));
-        assertEquals( "1. Ivo Ivic - 061/321-645", imenik.naSlovo('I').trim());
+        String naSlovo = imenik.naSlovo('I').trim();
+        assertEquals( "1. Ivo Ivic - 061/321-645", naSlovo);
     }
 
     @Test
