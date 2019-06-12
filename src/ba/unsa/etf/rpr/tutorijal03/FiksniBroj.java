@@ -15,6 +15,10 @@ public class FiksniBroj extends TelefonskiBroj {
         id++;
     }
 
+    public Grad getGrad() {
+        return this.grad;
+    }
+
     @Override
     public String ispisi() {
         HashMap<Grad, String> mapiranje = GradPozivniMapiranje.getMapiranje();

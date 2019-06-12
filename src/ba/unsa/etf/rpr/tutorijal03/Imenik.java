@@ -38,6 +38,11 @@ public class Imenik {
     }
 
     public Set<String> izGrada(Grad g) {
+        List<String> imena = imenik.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() instanceof FiksniBroj && ((FiksniBroj)entry.getValue()).getGrad() == g)
+                .map(m -> m.getKey())
+                .collect(Collectors.toList());
         return null;
     }
 
